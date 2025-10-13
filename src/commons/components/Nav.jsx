@@ -1,8 +1,13 @@
-import ggirickHeader from '../../assets/logo/ggirick-header.png';
+import ggirickHeader from "../../assets/logo/ggirick-header.png";
 import { useNavigate } from "react-router-dom";
+import { Button, DarkThemeToggle } from "flowbite-react";
+import React, { useState } from "react";
+import { useThemeMode } from "../../context/ThemeContext.jsx";
 
 export default function Nav() {
   const navigate = useNavigate();
+  const { computeMode, toggleMode } = useThemeMode();
+
   return (
     <nav className="fixed top-0 right-0 left-0 z-50 border-b border-gray-200 bg-white px-4 py-2.5 dark:border-gray-700 dark:bg-gray-800">
       <div className="flex flex-wrap items-center justify-between">
@@ -42,17 +47,15 @@ export default function Nav() {
             <span className="sr-only">Toggle sidebar</span>
           </button>
           <button
-            onClick={() => {navigate("/ggirick_wireframe")}}
+            onClick={() => {
+              navigate("/ggirick_wireframe");
+            }}
             className="mr-4 flex items-center justify-between"
           >
-            <img
-              src={ggirickHeader}
-              className="mr-2 h-8"
-              alt="Flowbite Logo"
-            />
+            <img src={ggirickHeader} className="mr-2 h-8" alt="Flowbite Logo" />
           </button>
         </div>
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-end ml-auto pr-2">
           <form action="#" method="GET" className="hidden md:block md:pl-2">
             <label htmlFor="topbar-search" className="sr-only">
               Search
@@ -83,6 +86,22 @@ export default function Nav() {
           </form>
         </div>
         <div className="flex items-center lg:order-2">
+          <button
+            type="button"
+            onClick={toggleMode}
+            className="mr-1 rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:ring-4 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-600"
+          >
+            <span className="sr-only">View notifications</span>
+            {/*Bell icon*/}
+            <svg
+              className="h-6 w-6"
+              fill="currentColor"
+              viewBox="0 -2 15 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
+            </svg>
+          </button>
           {/*Notifications*/}
           <button
             type="button"
@@ -519,29 +538,23 @@ export default function Nav() {
                   몰라4
                 </div>
               </a>
-              <a
-                href="#"
-                className="group block rounded-lg p-4 text-center hover:bg-gray-100 dark:hover:bg-gray-600"
+              <button
+                onClick={toggleMode}
+                className="group block rounded-lg p-4 text-center transition-colors hover:bg-gray-100 dark:hover:bg-gray-600"
               >
                 <svg
                   aria-hidden="true"
                   className="mx-auto mb-1 h-7 w-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                  ></path>
+                  <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
                 </svg>
                 <div className="text-sm text-gray-900 dark:text-white">
-                  몰라5
+                  다크모드
                 </div>
-              </a>
+              </button>
             </div>
           </div>
           <button
