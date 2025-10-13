@@ -13,16 +13,16 @@ export default function App() {
         <SideBar />
 
         <Routes>
-          <Route path="/" element={<CommonLayout />}></Route>
-          <Route path="/board" element={<BoardPage />}></Route>
-          <Route path="/approval" element={<ApprovalPage />}></Route>
-          <Route path="/calendar" element={<CommonLayout />}></Route>
-          <Route path="/workmanagement" element={<CommonLayout />}></Route>
-          <Route path="/reservation" element={<CommonLayout />}></Route>
-          <Route path="/task" element={<CommonLayout />}></Route>
-          <Route path="/mail" element={<CommonLayout />}></Route>
-          <Route path="/address" element={<CommonLayout />}></Route>
-          <Route path="/chat" element={<CommonLayout />}></Route>
+          <Route path="/ggirick_wireframe/" element={<CommonLayout />}></Route>
+          <Route path="/ggirick_wireframe/board" element={<BoardPage />}></Route>
+          <Route path="/ggirick_wireframe/approval" element={<ApprovalPage />}></Route>
+          <Route path="/ggirick_wireframe/calendar" element={<CommonLayout />}></Route>
+          <Route path="/ggirick_wireframe/workmanagement" element={<CommonLayout />}></Route>
+          <Route path="/ggirick_wireframe/reservation" element={<CommonLayout />}></Route>
+          <Route path="/ggirick_wireframe/task" element={<CommonLayout />}></Route>
+          <Route path="/ggirick_wireframe/mail" element={<CommonLayout />}></Route>
+          <Route path="/ggirick_wireframe/address" element={<CommonLayout />}></Route>
+          <Route path="/ggirick_wireframe/chat" element={<CommonLayout />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

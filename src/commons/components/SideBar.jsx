@@ -42,7 +42,7 @@ export default function SideBar() {
           <li>
             <button
               type="button"
-              onClick={() => navigate("/board")}
+              onClick={() => navigate("/ggirick_wireframe/board")}
               className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
               <svg
@@ -61,7 +61,7 @@ export default function SideBar() {
           <li>
             <button
               type="button"
-              onClick={() => navigate("/approval")}
+              onClick={() => navigate("/ggirick_wireframe/approval")}
               className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
               <svg
@@ -91,7 +91,7 @@ export default function SideBar() {
           <li>
             <button
               type="button"
-              onClick={() => navigate("/calendar")}
+              onClick={() => navigate("/ggirick_wireframe/calendar")}
               className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
               <svg
@@ -118,7 +118,7 @@ export default function SideBar() {
           <li>
             <button
               type="button"
-              onClick={() => navigate("/workmanagement")}
+              onClick={() => navigate("/ggirick_wireframe/workmanagement")}
               className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
               <svg
@@ -139,7 +139,7 @@ export default function SideBar() {
           <li>
             <button
               type="button"
-              onClick={() => navigate("/reservation")}
+              onClick={() => navigate("/ggirick_wireframe/reservation")}
               className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
               <svg
@@ -167,7 +167,7 @@ export default function SideBar() {
           <li>
             <button
               type="button"
-              onClick={() => navigate("/task")}
+              onClick={() => navigate("/ggirick_wireframe/task")}
               className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
               <svg
@@ -192,7 +192,7 @@ export default function SideBar() {
           <li>
             <button
               type="button"
-              onClick={() => navigate("/mail")}
+              onClick={() => navigate("/ggirick_wireframe/mail")}
               className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
               <svg
@@ -219,7 +219,7 @@ export default function SideBar() {
           <li>
             <button
               type="button"
-              onClick={() => navigate("/address")}
+              onClick={() => navigate("/ggirick_wireframe/address")}
               className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
               <svg
@@ -249,7 +249,7 @@ export default function SideBar() {
           <li>
             <button
               type="button"
-              onClick={() => navigate("/chat")}
+              onClick={() => navigate("/ggirick_wireframe/chat")}
               className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
               <svg

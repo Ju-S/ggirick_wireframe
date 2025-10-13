@@ -1,6 +1,8 @@
 import ggirickHeader from '../../assets/logo/ggirick-header.png';
+import { useNavigate } from "react-router-dom";
 
 export default function Nav() {
+  const navigate = useNavigate();
   return (
     <nav className="fixed top-0 right-0 left-0 z-50 border-b border-gray-200 bg-white px-4 py-2.5 dark:border-gray-700 dark:bg-gray-800">
       <div className="flex flex-wrap items-center justify-between">
@@ -39,8 +41,8 @@ export default function Nav() {
             </svg>
             <span className="sr-only">Toggle sidebar</span>
           </button>
-          <a
-            href="#"
+          <button
+            onClick={() => {navigate("/ggirick_wireframe")}}
             className="mr-4 flex items-center justify-between"
           >
             <img
@@ -48,7 +50,7 @@ export default function Nav() {
               className="mr-2 h-8"
               alt="Flowbite Logo"
             />
-          </a>
+          </button>
         </div>
         <div className="flex items-center justify-end">
           <form action="#" method="GET" className="hidden md:block md:pl-2">
