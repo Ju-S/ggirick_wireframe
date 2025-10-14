@@ -24,7 +24,7 @@ export default function App() {
             <Route path="/ggirick_wireframe" element={<MainPage />}></Route>
             <Route
               path="/ggirick_wireframe/board"
-              element={<CommonLayout />}
+              element={<BoardPage />}
             ></Route>
             <Route
               path="/ggirick_wireframe/approval"
