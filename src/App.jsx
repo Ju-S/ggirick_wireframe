@@ -11,6 +11,7 @@ import MainPage from "./pages/MainPage.jsx";
 import Error404Page from "./pages/Error404Page.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import TaskPage from "./pages/TaskPage.jsx";
+import MailPage from "./pages/MailPage.jsx";
 
 export default function App() {
   return (
@@ -48,7 +49,7 @@ export default function App() {
             ></Route>
             <Route
               path="/ggirick_wireframe/mail"
-              element={<CommonLayout />}
+              element={<MailPage />}
             ></Route>
             <Route
               path="/ggirick_wireframe/address"
