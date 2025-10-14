@@ -11,6 +11,7 @@ import MainPage from "./pages/MainPage.jsx";
 import Error404Page from "./pages/Error404Page.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import TaskPage from "./pages/TaskPage.jsx";
+import WorkManagementPage from "./pages/WorkManagementPage.jsx";
 
 export default function App() {
   return (
@@ -36,7 +37,7 @@ export default function App() {
             ></Route>
             <Route
               path="/ggirick_wireframe/workmanagement"
-              element={<CommonLayout />}
+              element={<WorkManagementPage />}
             ></Route>
             <Route
               path="/ggirick_wireframe/reservation"
