@@ -176,19 +176,19 @@ export default function MainPage() {
                   </span>
                 </div>
                 <Card
-                  onClick={() => navigate("chat")}
+                  onClick={() => navigate("calendar")}
                   className="h-14 w-full rounded-lg shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                 >
                   일정 1
                 </Card>
                 <Card
-                  onClick={() => navigate("chat")}
+                  onClick={() => navigate("calendar")}
                   className="h-14 w-full rounded-lg shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                 >
                   일정 2
                 </Card>
                 <Card
-                  onClick={() => navigate("chat")}
+                  onClick={() => navigate("calendar")}
                   className="h-14 w-full rounded-lg shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                 >
                   일정 3
@@ -226,25 +226,25 @@ export default function MainPage() {
                   </span>
                 </div>
                 <Card
-                  onClick={() => navigate("chat")}
+                  onClick={() => navigate("approval")}
                   className="h-14 w-full rounded-lg shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                 >
                   결재 1
                 </Card>
                 <Card
-                  onClick={() => navigate("chat")}
+                  onClick={() => navigate("approval")}
                   className="h-14 w-full rounded-lg shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                 >
                   결재 2
                 </Card>
                 <Card
-                  onClick={() => navigate("chat")}
+                  onClick={() => navigate("approval")}
                   className="h-14 w-full rounded-lg shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                 >
                   결재 3
                 </Card>
                 <button
-                  onClick={() => navigate("calendar")}
+                  onClick={() => navigate("approval")}
                   className="h-8 w-full rounded-lg border-1 border-gray-200 bg-white text-sm hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                 >
                   전체 결재 보기
@@ -278,19 +278,19 @@ export default function MainPage() {
                   </span>
                 </div>
                 <Card
-                  onClick={() => navigate("chat")}
+                  onClick={() => navigate("drive")}
                   className="h-14 w-full rounded-lg shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                 >
                   최과장님이 문서를 업로드했습니다.
                 </Card>
                 <Card
-                  onClick={() => navigate("chat")}
+                  onClick={() => navigate("board")}
                   className="h-14 w-full rounded-lg shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                 >
                   오과장님이 공지를 등록했습니다.
                 </Card>
                 <Card
-                  onClick={() => navigate("chat")}
+                  onClick={() => navigate("calendar")}
                   className="h-14 w-full rounded-lg shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                 >
                   이사원님이 일정을 추가했습니다.
@@ -330,39 +330,39 @@ export default function MainPage() {
                     <div className="col-span-2">
                     </div>
                     <Card
-                      onClick={() => navigate("chat")}
+                      onClick={() => navigate("")}
                       className="h-24 w-28 rounded-lg text-center text-base shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                     >
                       출근<br/>
                       <span className="text-sm">08:56:24</span>
                     </Card>
                     <Card
-                      onClick={() => navigate("chat")}
+                      onClick={() => navigate("")}
                       className="h-24 w-28 rounded-lg text-center text-base shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                     >
                       퇴근<br/>
                       <span className="text-sm">00:00:00</span>
                     </Card>
                     <Card
-                      onClick={() => navigate("chat")}
+                      onClick={() => navigate("")}
                       className="h-12 w-28 rounded-lg text-center text-base shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                     >
                       업무
                     </Card>
                     <Card
-                      onClick={() => navigate("chat")}
+                      onClick={() => navigate("")}
                       className="h-12 w-28 rounded-lg text-center text-base shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                     >
                       외출
                     </Card>
                     <Card
-                      onClick={() => navigate("chat")}
+                      onClick={() => navigate("")}
                       className="h-12 w-28 rounded-lg text-center text-base shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                     >
                       회의
                     </Card>
                     <Card
-                      onClick={() => navigate("chat")}
+                      onClick={() => navigate("")}
                       className="h-12 w-28 rounded-lg text-center text-base shadow-none hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                     >
                       외근

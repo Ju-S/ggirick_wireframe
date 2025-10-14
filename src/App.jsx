@@ -28,7 +28,7 @@ export default function App() {
             ></Route>
             <Route
               path="/ggirick_wireframe/approval"
-              element={<CommonLayout />}
+              element={<ApprovalPage />}
             ></Route>
             <Route
               path="/ggirick_wireframe/calendar"
