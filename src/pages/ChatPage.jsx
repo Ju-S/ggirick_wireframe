@@ -1,6 +1,6 @@
-import ChatRoom from "../../../../Users/keduit/Downloads/ggirick_wireframe-master/src/commons/components/chat/ChatRoom.jsx";
-import SidebarChannels from "../../../../Users/keduit/Downloads/ggirick_wireframe-master/src/commons/components/chat/SidebarChannels.jsx";
-import SidebarWorkspaces from "../../../../Users/keduit/Downloads/ggirick_wireframe-master/src/commons/components/chat/SidebarWorkspaces.jsx";
+import SidebarWorkspaces from "../commons/components/chat/SidebarWorkspaces.jsx";
+import SidebarChannels from "../commons/components/chat/SidebarChannels.jsx";
+import ChatRoom from "../commons/components/chat/ChatRoom.jsx";
 
 export default function ChatPage() {
   return(
