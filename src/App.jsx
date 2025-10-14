@@ -11,6 +11,8 @@ import MainPage from "./pages/MainPage.jsx";
 import Error404Page from "./pages/Error404Page.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import TaskPage from "./pages/TaskPage.jsx";
+import OrganizationPage from "./pages/OrganizationPage.jsx";
+import DrivePage from "./pages/DrivePage.jsx";
 
 export default function App() {
   return (
@@ -64,12 +66,13 @@ export default function App() {
               ></Route>
             <Route
               path="/ggirick_wireframe/drive"
-              element={<CommonLayout />}
+              element={<DrivePage />}
             ></Route>
             <Route
               path="/ggirick_wireframe/organization"
-              element={<CommonLayout />}
+              element={<OrganizationPage />}
             ></Route>
+
             <Route path="*" element={<Error404Page />}></Route>
           </Routes>
         </div>

@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import  CalendarView  from "../commons/components/task/CalendarView.jsx";
+import KanbanView from "../commons/components/task/KanbanView.jsx";
+import TableView from "../commons/components/task/TableView.jsx";
+import { DatabaseView } from "../commons/components/task/DatabaseView.jsx";
+import GanttView from "../commons/components/task/GantView.jsx";
 
 
 export default function TaskPage() {
@@ -35,27 +39,11 @@ export default function TaskPage() {
   const [activeView, setActiveView] = useState("kanban");
 
   const selectedProject = projects.find((p) => p.id === selectedProjectId);
-
-  // ✅ 상태별 그룹화
-  const getColumns = (tasks) => ({
-    "할 일": tasks.filter((t) => t.status === "할 일"),
-    "진행 중": tasks.filter((t) => t.status === "진행 중"),
-    "완료": tasks.filter((t) => t.status === "완료"),
-  });
-
-  const onDragEnd = (result) => {
-    const { source, destination } = result;
-    if (!destination) return;
-    if (source.droppableId === destination.droppableId) return;
-
-    // ✅ 상태 변경
+  const handleTaskUpdate = (taskId, updates) => {
     const updatedTasks = selectedProject.tasks.map((task) =>
-      task.id === result.draggableId
-        ? { ...task, status: destination.droppableId }
-        : task
+      task.id === taskId ? { ...task, ...updates } : task
     );
 
-    // ✅ projects 배열에 반영
     setProjects((prev) =>
       prev.map((p) =>
         p.id === selectedProject.id ? { ...p, tasks: updatedTasks } : p
@@ -63,95 +51,29 @@ export default function TaskPage() {
     );
   };
 
+  const viewProps = {
+    tasks: selectedProject.tasks,
+    projectName: selectedProject.name,
+    onTaskUpdate: handleTaskUpdate,
+  };
+
   const renderView = () => {
     if (activeView === "kanban") {
-      const columns = getColumns(selectedProject.tasks);
-      return (
-        <DragDropContext onDragEnd={onDragEnd}>
-          <div className="grid grid-cols-3 gap-4 p-4">
-            {Object.entries(columns).map(([col, colTasks]) => (
-              <Droppable key={col} droppableId={col}>
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                    className={`bg-gray-50 border rounded-lg p-4 transition-colors ${
-                      snapshot.isDraggingOver ? "bg-blue-50" : ""
-                    }`}
-                  >
-                    <h4 className="font-semibold mb-3">{col}</h4>
-                    <div className="space-y-3 min-h-[100px]">
-                      {colTasks.map((task, index) => (
-                        <Draggable key={task.id} draggableId={task.id} index={index}>
-                          {(provided, snapshot) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              className={`bg-white p-3 rounded-lg shadow-sm border cursor-pointer hover:bg-gray-50 transition-all ${
-                                snapshot.isDragging ? "bg-blue-100" : ""
-                              }`}
-                            >
-                              <p className="font-medium text-sm">{task.title}</p>
-                              <div className="flex items-center justify-between text-xs text-gray-500 mt-1">
-                                <div className="flex items-center gap-1">
-
-                                  {task.assignee}
-                                </div>
-                                <span>{task.due}</span>
-                              </div>
-                            </div>
-                          )}
-                        </Draggable>
-                      ))}
-                      {provided.placeholder}
-                    </div>
-                  </div>
-                )}
-              </Droppable>
-            ))}
-          </div>
-        </DragDropContext>
-      );
+      return <KanbanView selectedProject={selectedProject} setProjects={setProjects}/>
     }
 
     if (activeView === "table") {
-      return (
-        <div className="overflow-x-auto bg-white rounded-lg border shadow-sm">
-          <table className="min-w-full text-sm text-left">
-            <thead className="bg-gray-100 text-gray-600 uppercase">
-            <tr>
-              <th className="px-6 py-3">업무명</th>
-              <th className="px-6 py-3">담당자</th>
-              <th className="px-6 py-3">상태</th>
-              <th className="px-6 py-3">기한</th>
-            </tr>
-            </thead>
-            <tbody>
-            {selectedProject.tasks.map((task) => (
-              <tr key={task.id} className="border-t hover:bg-gray-50">
-                <td className="px-6 py-3">{task.title}</td>
-                <td className="px-6 py-3">{task.assignee}</td>
-                <td className="px-6 py-3">
-                    <span
-                      className={`px-2 py-1 rounded text-xs ${
-                        task.status === "완료"
-                          ? "bg-green-100 text-green-800"
-                          : task.status === "진행 중"
-                            ? "bg-blue-100 text-blue-800"
-                            : "bg-gray-100 text-gray-700"
-                      }`}
-                    >
-                      {task.status}
-                    </span>
-                </td>
-                <td className="px-6 py-3">{task.due}</td>
-              </tr>
-            ))}
-            </tbody>
-          </table>
-        </div>
-      );
+      return <TableView selectedProject={selectedProject} />
+    }
+    if(activeView ==="calendar"){
+
+      return <CalendarView {...viewProps}/>
+    }
+    if(activeView ==="database"){
+      return <DatabaseView selectedProject={selectedProject} />
+    }
+    if(activeView ==="gantt"){
+      return <GanttView {...viewProps} />
     }
 
     return (
@@ -162,31 +84,35 @@ export default function TaskPage() {
   };
 
   return (
-    <main className="flex flex-col h-screen bg-gray-100  md:ml-64">
+    <main className="flex flex-col h-screen bg-gray-100 pt-20 md:ml-64">
       {/* 🔹 프로젝트 헤더 */}
-      <header className="bg-white border-b p-4 flex justify-between items-center">
-        <div>
-          <h1 className="text-xl font-semibold">{selectedProject.name}</h1>
-          <p className="text-sm text-gray-500">{selectedProject.desc}</p>
-        </div>
-        <div className="flex items-center gap-6 text-sm text-gray-600">
-          <div className="flex items-center gap-1">
-
-            <span>{selectedProject.range}</span>
+      <header className="bg-white border-b shadow-sm p-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-800">{selectedProject.name}</h1>
+            <p className="text-sm text-gray-500 mt-1">{selectedProject.desc}</p>
           </div>
-          <div className="flex -space-x-2">
-            {selectedProject.members.map((m, i) => (
-              <div
-                key={i}
-                className="w-7 h-7 flex items-center justify-center rounded-full bg-blue-500 text-white text-xs border-2 border-white"
-              >
-                {m}
-              </div>
-            ))}
+          <div className="flex items-center gap-6 text-sm text-gray-600">
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span className="font-medium">{selectedProject.range}</span>
+            </div>
+            <div className="flex -space-x-2">
+              {selectedProject.members.map((m, i) => (
+                <div
+                  key={i}
+                  className="w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white text-xs font-semibold border-2 border-white shadow-sm"
+                >
+                  {m}
+                </div>
+              ))}
+            </div>
+            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors shadow-sm">
+              + 새 할 일
+            </button>
           </div>
-          <button className="px-3 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700">
-            + 새 할 일
-          </button>
         </div>
       </header>
 
@@ -203,21 +129,21 @@ export default function TaskPage() {
             </option>
           ))}
         </select>
-        <div className="flex space-x-2">
+        <div className="flex flex-wrap gap-2">
           {[
-            ["kanban","칸반",  "칸반"],
-            ["table","테이블",  "테이블"],
-            ["gantt", "간트",  "간트"],
-            ["calendar", "캘린더",  "캘린더"],
-            ["database",  "DB","DB"],
-          ].map(([key, Icon, label]) => (
+            ["kanban", "칸반"],
+            ["table", "테이블"],
+            ["gantt", "간트"],
+            ["calendar", "캘린더"],
+            ["database", "DB"],
+          ].map(([key, label]) => (
             <button
               key={key}
               onClick={() => setActiveView(key)}
-              className={`flex items-center gap-1 px-3 py-2 rounded-md text-sm ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                 activeView === key
-                  ? "bg-blue-600 text-white"
-                  : "text-gray-600 hover:bg-gray-100"
+                  ? "bg-blue-600 text-white shadow-md"
+                  : "text-gray-600 hover:bg-gray-100 border border-gray-200"
               }`}
             >
              {label}

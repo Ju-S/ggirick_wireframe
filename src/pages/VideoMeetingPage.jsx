@@ -1,6 +1,6 @@
 export default function VideoMeetingPage(){
   return (
-    <main className="flex flex-col h-screen p-4 pt-20 md:ml-64 bg-gray-50">
+    <main className="flex flex-col h-screen p-4 pt-20 md:ml-64 bg-gray-50 ">
       {/* 상단 헤더 */}
       <header className="flex items-center justify-between p-4 bg-white border-b shadow">
         <h1 className="text-lg font-semibold text-gray-800">개발 팀 미팅</h1>
