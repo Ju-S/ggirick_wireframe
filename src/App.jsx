@@ -4,6 +4,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CommonLayout from "./commons/CommonLayout.jsx";
 import BoardPage from "./pages/BoardPage.jsx";
 import ApprovalPage from "./pages/ApprovalPage.jsx";
+import ChatPage from "./pages/ChatPage.jsx";
+import VideoMeetingPage from "./pages/VideoMeetingPage.jsx";
+import ReservationPage from "./pages/ReservationPage.jsx";
+import TaskPage from "./pages/TaskPage.jsx";
 
 export default function App() {
   return (
@@ -18,11 +22,12 @@ export default function App() {
           <Route path="/ggirick_wireframe/approval" element={<CommonLayout />}></Route>
           <Route path="/ggirick_wireframe/calendar" element={<CommonLayout />}></Route>
           <Route path="/ggirick_wireframe/workmanagement" element={<CommonLayout />}></Route>
-          <Route path="/ggirick_wireframe/reservation" element={<CommonLayout />}></Route>
-          <Route path="/ggirick_wireframe/task" element={<CommonLayout />}></Route>
+          <Route path="/ggirick_wireframe/reservation" element={<ReservationPage />}></Route>
+          <Route path="/ggirick_wireframe/task" element={<TaskPage />}></Route>
           <Route path="/ggirick_wireframe/mail" element={<CommonLayout />}></Route>
           <Route path="/ggirick_wireframe/address" element={<CommonLayout />}></Route>
-          <Route path="/ggirick_wireframe/chat" element={<CommonLayout />}></Route>
+          <Route path="/ggirick_wireframe/chat" element={<ChatPage />}></Route>
+          <Route path="/ggirick_wireframe/videomeeting" element={<VideoMeetingPage />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
