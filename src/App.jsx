@@ -4,9 +4,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CommonLayout from "./commons/CommonLayout.jsx";
 import BoardPage from "./pages/BoardPage.jsx";
 import ApprovalPage from "./pages/ApprovalPage.jsx";
+import ChatPage from "./pages/ChatPage.jsx";
+import VideoMeetingPage from "./pages/VideoMeetingPage.jsx";
+import ReservationPage from "./pages/ReservationPage.jsx";
 import MainPage from "./pages/MainPage.jsx";
 import Error404Page from "./pages/Error404Page.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
+import TaskPage from "./pages/TaskPage.jsx";
 
 export default function App() {
   return (
@@ -36,11 +40,11 @@ export default function App() {
             ></Route>
             <Route
               path="/ggirick_wireframe/reservation"
-              element={<CommonLayout />}
+              element={<ReservationPage />}
             ></Route>
             <Route
               path="/ggirick_wireframe/task"
-              element={<CommonLayout />}
+              element={<TaskPage />}
             ></Route>
             <Route
               path="/ggirick_wireframe/mail"
@@ -52,8 +56,12 @@ export default function App() {
             ></Route>
             <Route
               path="/ggirick_wireframe/chat"
-              element={<CommonLayout />}
+              element={<ChatPage />}
             ></Route>
+              <Route
+                  path="/ggirick_wireframe/videomeeting"
+                  element={<VideoMeetingPage />}
+              ></Route>
             <Route
               path="/ggirick_wireframe/drive"
               element={<CommonLayout />}

@@ -15,6 +15,7 @@
   },
   "homepage": "https://ju-s.github.io/ggirick_wireframe/",
   "dependencies": {
+    "@hello-pangea/dnd": "^18.0.1",
     "flowbite": "^3.1.2",
     "flowbite-react": "^0.12.4",
     "react": "^19.1.0",
