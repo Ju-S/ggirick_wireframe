@@ -12,9 +12,9 @@ export default function ChatRoom() {
   ];
 
   return (
-    <main className="flex flex-1 flex-col bg-gray-50">
+    <main className="flex flex-1 flex-col bg-gray-50 dark:bg-gray-800">
       {/* 상단 채널 헤더 */}
-      <header className="flex items-center justify-between border-b bg-white p-4">
+      <header className="flex items-center justify-between border-b bg-white p-4 dark:bg-gray-800">
         <div>
           <h2 className="text-lg font-semibold text-gray-800"># general</h2>
           <p className="text-sm text-gray-500">일반 대화방입니다</p>
