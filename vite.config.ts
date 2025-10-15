@@ -7,4 +7,9 @@ import flowbiteReact from "flowbite-react/plugin/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss(), flowbiteReact()],
   base: "/ggirick_wireframe",
+  server: {
+    host: true, // 또는 host: '0.0.0.0'
+    port: 5173, // 기본 포트
+    strictPort: true // 이미 사용 중이면 에러 발생
+  }
 });

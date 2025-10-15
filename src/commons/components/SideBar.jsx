@@ -5,11 +5,11 @@ export default function SideBar() {
 
   return (
     <aside
-      className="fixed top-0 left-0 z-40 h-screen w-64 -translate-x-full border-r border-gray-200 bg-white pt-14 transition-transform md:translate-x-0 dark:border-gray-700 dark:bg-gray-800"
+      className="fixed top-0 left-0 z-40 h-screen w-64 -translate-x-full border-r border-base-300 bg-base-100 pt-14 transition-transform md:translate-x-0 text-base-content"
       aria-label="Sidenav"
       id="drawer-navigation"
     >
-      <div className="h-full overflow-y-auto bg-white px-3 py-5 dark:bg-gray-800">
+      <div className="h-full overflow-y-auto border-base-300 bg-base-100 px-3 py-5 dark:bg-gray-800">
         <form action="#" method="GET" className="mb-2 md:hidden">
           <label htmlFor="sidebar-search" className="sr-only">
             Search
@@ -17,7 +17,7 @@ export default function SideBar() {
           <div className="relative">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
               <svg
-                className="h-5 w-5 text-gray-500 dark:text-gray-400"
+                className="h-5 w-5 "
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ export default function SideBar() {
               type="text"
               name="search"
               id="sidebar-search"
-              className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 pl-10 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+              className="focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500 dark:focus:border-primary-500 block w-full rounded-lg border bg-base-100 p-2 pl-10 text-sm "
               placeholder="검색어 입력.."
             />
           </div>
@@ -43,7 +43,7 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75 "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ export default function SideBar() {
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 stroke="currentColor"
-                className="lucide lucide-house-icon lucide-house h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="lucide lucide-house-icon lucide-house h-6 w-6 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
               >
                 <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
                 <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -64,11 +64,11 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe/board")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="h-6 w-6 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
                 fill="currentColor"
                 viewBox="0 0 15 17"
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,11 +83,11 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe/approval")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="h-6 w-6 flex-shrink-0 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
                 fill="currentColor"
                 viewBox="0 -1 15 19"
                 xmlns="http://www.w3.org/2000/svg"
@@ -113,11 +113,11 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe/calendar")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="h-6 w-6 flex-shrink-0 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
                 fill="currentColor"
                 viewBox="0 -2 15 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -140,11 +140,11 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe/workmanagement")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="h-6 w-6 flex-shrink-0 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
                 fill="currentColor"
                 viewBox="0 -2 15 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -161,11 +161,11 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe/reservation")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="h-6 w-6 flex-shrink-0 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
                 fill="currentColor"
                 viewBox="0 -2 15 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -189,11 +189,11 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe/task")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="h-6 w-6 flex-shrink-0 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -214,11 +214,11 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe/mail")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="h-6 w-6 flex-shrink-0 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
                 fill="currentColor"
                 viewBox="0 -2 15 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -241,11 +241,11 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe/address")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="h-6 w-6 flex-shrink-0 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
                 fill="currentColor"
                 viewBox="0 -2 15 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -271,11 +271,11 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe/chat")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="h-6 w-6 flex-shrink-0 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
                 fill="currentColor"
                 viewBox="0 -2 15 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -289,11 +289,11 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe/drive")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="h-6 w-6 flex-shrink-0 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
                 fill="currentColor"
                 viewBox="0 -2 15 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -309,11 +309,11 @@ export default function SideBar() {
             <button
               type="button"
               onClick={() => navigate("/ggirick_wireframe/organization")}
-              className="group flex w-full items-center rounded-lg p-2 text-base font-medium text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+              className="group flex w-full items-center rounded-lg p-2 text-base-content font-medium  transition duration-75"
             >
               <svg
                 aria-hidden="true"
-                className="h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+                className="h-6 w-6 flex-shrink-0 text-primary transition duration-75 group-hover:text-secondary dark:text-gray-400 dark:group-hover:text-white"
                 fill="currentColor"
                 viewBox="0 -2 15 20"
                 xmlns="http://www.w3.org/2000/svg"

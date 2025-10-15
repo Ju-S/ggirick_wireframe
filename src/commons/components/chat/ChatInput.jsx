@@ -2,15 +2,16 @@ import React from "react";
 
 export default function ChatInput() {
   return (
-    <div className="border-t bg-white p-4">
+    <div className="border-t bg-base-100 p-4">
       <form>
         <label htmlFor="chat" className="sr-only">
           Your message
         </label>
-        <div className="flex items-center rounded-lg bg-gray-50 px-3 py-2 dark:bg-gray-700">
+        <div className="flex items-center rounded-lg bg-base-100/50 px-3 py-2">
+          {/* 이미지 업로드 버튼 */}
           <button
             type="button"
-            className="inline-flex cursor-pointer justify-center rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+            className="inline-flex cursor-pointer justify-center rounded-lg p-2 text-base-content/60 hover:bg-base-200 hover:text-base-content"
           >
             <svg
               className="h-5 w-5"
@@ -24,19 +25,19 @@ export default function ChatInput() {
                 d="M13 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM7.565 7.423 4.5 14h11.518l-2.516-3.71L11 13 7.565 7.423Z"
               />
               <path
-
                 d="M18 1H2a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"
               />
               <path
-
                 d="M13 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0ZM7.565 7.423 4.5 14h11.518l-2.516-3.71L11 13 7.565 7.423Z"
               />
             </svg>
             <span className="sr-only">Upload image</span>
           </button>
+
+          {/* 이모지 버튼 */}
           <button
             type="button"
-            className="cursor-pointer rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+            className="cursor-pointer rounded-lg p-2 text-base-content/60 hover:bg-base-200 hover:text-base-content"
           >
             <svg
               className="h-5 w-5"
@@ -47,21 +48,24 @@ export default function ChatInput() {
             >
               <path
                 stroke="currentColor"
-
                 d="M13.408 7.5h.01m-6.876 0h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM4.6 11a5.5 5.5 0 0 0 10.81 0H4.6Z"
               />
             </svg>
             <span className="sr-only">Add emoji</span>
           </button>
+
+          {/* 입력창 */}
           <textarea
             id="chat"
-            rows="1"
-            className="mx-4 block w-full rounded-lg border border-gray-300 bg-white p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+            rows={1}
+            className="mx-4 block w-full rounded-lg border border-base-300 bg-base-100 p-2.5 text-sm text-base-content placeholder:text-base-content/50 focus:border-primary focus:ring-primary"
             placeholder="Your message..."
           ></textarea>
+
+          {/* 전송 버튼 */}
           <button
             type="submit"
-            className="inline-flex cursor-pointer justify-center rounded-full p-2 text-blue-600 hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-600"
+            className="inline-flex cursor-pointer justify-center rounded-full p-2 text-primary hover:bg-primary/20"
           >
             <svg
               className="h-5 w-5 rotate-90 rtl:-rotate-90"
