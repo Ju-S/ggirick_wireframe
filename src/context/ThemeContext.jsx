@@ -1,39 +1,32 @@
+// src/context/ThemeContext.tsx
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [mode, setModeState] = useState(
-    () => localStorage.getItem("themeMode") || "auto"
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light",
   );
 
-  const computedMode =
-    mode === "auto"
-      ? window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light"
-      : mode;
-
   useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle("dark", computedMode === "dark");
-    localStorage.setItem("themeMode", mode);
-  }, [computedMode, mode]);
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+    console.log(theme)
+  }, [theme]);
 
-  const setMode = (newMode) => setModeState(newMode);
-  const toggleMode = () =>
-    setModeState((prev) =>
-      prev === "light" ? "dark" : prev === "dark" ? "auto" : "light"
-    );
-  const clearMode = () => setModeState("auto");
-
-  const value = { mode, computedMode, setMode, toggleMode, clearMode };
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
 
   return (
-    <ThemeContext.Provider value={value}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
 };
 
-export const useThemeMode = () => useContext(ThemeContext);
+export const useThemeMode = () => {
+  const context = useContext(ThemeContext);
+  if (!context) throw new Error("useThemeMode must be used within a ThemeProvider");
+  return context;
+};

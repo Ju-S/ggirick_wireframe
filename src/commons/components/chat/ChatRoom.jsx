@@ -12,14 +12,14 @@ export default function ChatRoom() {
   ];
 
   return (
-    <main className="flex flex-1 flex-col bg-gray-50 dark:bg-gray-800">
+    <main className="flex flex-1 flex-col bg-base-200 text-base-content">
       {/* 상단 채널 헤더 */}
-      <header className="flex items-center justify-between border-b bg-white p-4 dark:bg-gray-800">
+      <header className="flex items-center justify-between border-b bg-base-100 p-4">
         <div>
-          <h2 className="text-lg font-semibold text-gray-800"># general</h2>
-          <p className="text-sm text-gray-500">일반 대화방입니다</p>
+          <h2 className="text-lg font-semibold text-base-content"># general</h2>
+          <p className="text-sm text-base-content/60">일반 대화방입니다</p>
         </div>
-        <button className="text-sm text-blue-600 hover:underline">
+        <button className="text-sm text-primary hover:underline">
           View Members
         </button>
       </header>
@@ -40,28 +40,36 @@ export default function ChatRoom() {
               )}
               <div className={`${msg.isMine ? "text-right" : ""}`}>
                 {!msg.isMine && (
-                  <div className="text-sm font-semibold">
+                  <div className="text-sm font-semibold text-base-content">
                     {msg.sender}{" "}
-                    <span className="ml-2 text-xs text-gray-400">
-                      {msg.time}
-                    </span>
+                    <span className="ml-2 text-xs text-base-content/50">
+                  {msg.time}
+                </span>
                   </div>
                 )}
                 <div
-                  className={`mt-1 rounded-lg px-3 py-2 shadow ${msg.isMine ? "bg-blue-500 text-white" : "border bg-white"}`}
+                  className={`mt-1 rounded-lg px-3 py-2 shadow ${
+                    msg.isMine
+                      ? "bg-primary text-primary-content"
+                      : "border bg-base-100 text-base-content"
+                  }`}
                 >
                   {msg.text}
                 </div>
-                <div className="mt-1 flex items-center space-x-3 text-xs text-gray-500">
-                  {msg.like?<button className="hover:text-gray-700">👍 {msg.like}</button> :<></>}
-                  {msg.viewer? <span>읽음 {msg.viewer}</span> :<></>}
+                <div className="mt-1 flex items-center space-x-3 text-xs text-base-content/50">
+                  {msg.like ? (
+                    <button className="hover:text-base-content/80">
+                      👍 {msg.like}
+                    </button>
+                  ) : null}
+                  {msg.viewer ? <span>읽음 {msg.viewer}</span> : null}
                 </div>
               </div>
             </div>
           ) : (
             <div
               key={msg.id}
-              className="text-center text-xs text-gray-500 italic"
+              className="text-center text-xs text-base-content/50 italic"
             >
               {msg.text}
             </div>
@@ -72,5 +80,6 @@ export default function ChatRoom() {
       {/* 채팅 입력창 */}
       <ChatInput />
     </main>
+
   );
 }

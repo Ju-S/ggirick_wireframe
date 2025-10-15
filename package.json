@@ -17,6 +17,8 @@
   "dependencies": {
     "@hello-pangea/dnd": "^18.0.1",
     "@heroicons/react": "^2.2.0",
+    "axios": "^1.12.2",
+    "daisyui": "^5.3.1",
     "flowbite": "^3.1.2",
     "flowbite-react": "^0.12.4",
     "lucide-react": "^0.545.0",

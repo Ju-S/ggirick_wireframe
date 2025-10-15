@@ -1,22 +1,24 @@
 import ggirickHeader from "../../assets/logo/ggirick-header.png";
 import { useNavigate } from "react-router-dom";
-import { Button, DarkThemeToggle } from "flowbite-react";
+
+
 import React, { useState } from "react";
-import { useThemeMode } from "../../context/ThemeContext.jsx";
+
+import ThemeDropdown from "./ThemeDropdown.jsx";
 
 export default function Nav() {
   const navigate = useNavigate();
-  const { computeMode, toggleMode } = useThemeMode();
+
 
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50 border-b border-gray-200 bg-white px-4 py-2.5 dark:border-gray-700 dark:bg-gray-800">
+    <nav className="fixed top-0 right-0 left-0 z-50 border-b border-base-200 bg-base-100 px-4 py-2.5 dark:border-gray-700 dark:bg-gray-800">
       <div className="flex flex-wrap items-center justify-between">
         <div className="flex items-center justify-start">
           <button
             data-drawer-target="drawer-navigation"
             data-drawer-toggle="drawer-navigation"
             aria-controls="drawer-navigation"
-            className="mr-2 cursor-pointer rounded-lg p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:bg-gray-700 dark:focus:ring-gray-700"
+            className="mr-2 cursor-pointer rounded-lg p-2 text-gray-600 hover:bg-base-100 hover:text-gray-900 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:bg-gray-700 dark:focus:ring-gray-700"
           >
             <svg
               aria-hidden="true"
@@ -86,40 +88,12 @@ export default function Nav() {
           </form>
         </div>
         <div className="flex items-center lg:order-2">
-          <button
-            type="button"
-            onClick={toggleMode}
-            className="mr-1 rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:ring-4 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-600"
-          >
-            <span className="sr-only">View notifications</span>
-            {/*Bell icon*/}
-            <svg
-              className="h-6 w-6"
-              fill="currentColor"
-              viewBox="0 -2 15 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
-            </svg>
-          </button>
-          {/*Notifications*/}
-          <button
-            type="button"
-            data-dropdown-toggle="notification-dropdown"
-            className="mr-1 rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:ring-4 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-600"
-          >
-            <span className="sr-only">View notifications</span>
-            {/*Bell icon*/}
-            <svg
-              aria-hidden="true"
-              className="h-6 w-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
-            </svg>
-          </button>
+          <div className="flex gap-2 items-center">
+
+
+            {/* 다른 컬러테마 전환 */}
+           <ThemeDropdown/>
+          </div>
           {/*Dropdown menu*/}
           <div
             className="z-50 my-4 hidden max-w-sm list-none divide-y divide-gray-100 overflow-hidden rounded rounded-xl bg-white text-base shadow-lg dark:divide-gray-600 dark:bg-gray-700"
@@ -131,7 +105,7 @@ export default function Nav() {
             <div>
               <a
                 href="#"
-                className="flex border-b px-4 py-3 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-600"
+                className="flex border-b px-4 py-3 hover:bg-base-100 dark:border-gray-600 dark:hover:bg-gray-600"
               >
                 <div className="flex-shrink-0">
                   <img
@@ -139,7 +113,7 @@ export default function Nav() {
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
                     alt="Bonnie Green avatar"
                   />
-                  <div className="bg-primary-700 absolute -mt-5 ml-6 flex h-5 w-5 items-center justify-center rounded-full border border-white dark:border-gray-700">
+                  <div className="bg-primary-700 absolute -mt-5 ml-6 flex h-5 w-5 items-center justify-center rounded-full border border-base-100/40 dark:border-gray-700">
                     <svg
                       aria-hidden="true"
                       className="h-3 w-3 text-white"
@@ -167,7 +141,7 @@ export default function Nav() {
               </a>
               <a
                 href="#"
-                className="flex border-b px-4 py-3 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-600"
+                className="flex border-b px-4 py-3 hover:bg-base-100 dark:border-gray-600 dark:hover:bg-gray-600"
               >
                 <div className="flex-shrink-0">
                   <img
@@ -178,7 +152,7 @@ export default function Nav() {
                   <div className="absolute -mt-5 ml-6 flex h-5 w-5 items-center justify-center rounded-full border border-white bg-gray-900 dark:border-gray-700">
                     <svg
                       aria-hidden="true"
-                      className="h-3 w-3 text-white"
+                      className="h-3 w-3 "
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -189,11 +163,11 @@ export default function Nav() {
                 </div>
                 <div className="w-full pl-3">
                   <div className="mb-1.5 text-sm font-normal text-gray-500 dark:text-gray-400">
-                    <span className="font-semibold text-gray-900 dark:text-white">
+                    <span className="font-semibold ">
                       Jese leos
                     </span>
                     and
-                    <span className="font-medium text-gray-900 dark:text-white">
+                    <span className="font-medium ">
                       5 others
                     </span>
                     started following you.
@@ -205,7 +179,7 @@ export default function Nav() {
               </a>
               <a
                 href="#"
-                className="flex border-b px-4 py-3 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-600"
+                className="flex border-b px-4 py-3 hover:bg-base-100 dark:border-gray-600 dark:hover:bg-gray-600"
               >
                 <div className="flex-shrink-0">
                   <img
@@ -247,7 +221,7 @@ export default function Nav() {
               </a>
               <a
                 href="#"
-                className="flex border-b px-4 py-3 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-600"
+                className="flex border-b px-4 py-3 hover:bg-base-100 dark:border-gray-600 dark:hover:bg-gray-600"
               >
                 <div className="flex-shrink-0">
                   <img
@@ -289,7 +263,7 @@ export default function Nav() {
               </a>
               <a
                 href="#"
-                className="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="flex px-4 py-3 hover:bg-base-100 dark:hover:bg-gray-600"
               >
                 <div className="flex-shrink-0">
                   <img
@@ -325,7 +299,7 @@ export default function Nav() {
             </div>
             <a
               href="#"
-              className="text-md block bg-gray-50 py-2 text-center font-medium text-gray-900 hover:bg-gray-100 dark:bg-gray-600 dark:text-white dark:hover:underline"
+              className="text-md block bg-gray-50 py-2 text-center font-medium text-gray-900 hover:bg-base-100 dark:bg-gray-600 dark:text-white dark:hover:underline"
             >
               <div className="inline-flex items-center">
                 <svg
@@ -350,7 +324,7 @@ export default function Nav() {
           <button
             type="button"
             data-dropdown-toggle="apps-dropdown"
-            className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:ring-4 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-600"
+            className="rounded-lg p-2 text-gray-500 hover:bg-base-100 hover:text-gray-900 focus:ring-4 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-600"
           >
             <span className="sr-only">View notifications</span>
             {/*Icon*/}
@@ -374,7 +348,7 @@ export default function Nav() {
             <div className="grid grid-cols-3 gap-4 p-4">
               <a
                 href="#"
-                className="group block rounded-lg p-4 text-center hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="group block rounded-lg p-4 text-center hover:bg-base-100 dark:hover:bg-gray-600"
               >
                 <svg
                   aria-hidden="true"
@@ -395,7 +369,7 @@ export default function Nav() {
               </a>
               <a
                 href="#"
-                className="group block rounded-lg p-4 text-center hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="group block rounded-lg p-4 text-center hover:bg-base-100 dark:hover:bg-gray-600"
               >
                 <svg
                   aria-hidden="true"
@@ -412,7 +386,7 @@ export default function Nav() {
               </a>
               <a
                 href="#"
-                className="group block rounded-lg p-4 text-center hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="group block rounded-lg p-4 text-center hover:bg-base-100 dark:hover:bg-gray-600"
               >
                 <svg
                   aria-hidden="true"
@@ -433,7 +407,7 @@ export default function Nav() {
               </a>
               <a
                 href="#"
-                className="group block rounded-lg p-4 text-center hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="group block rounded-lg p-4 text-center hover:bg-base-100 dark:hover:bg-gray-600"
               >
                 <svg
                   aria-hidden="true"
@@ -454,7 +428,7 @@ export default function Nav() {
               </a>
               <a
                 href="#"
-                className="group block rounded-lg p-4 text-center hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="group block rounded-lg p-4 text-center hover:bg-base-100 dark:hover:bg-gray-600"
               >
                 <svg
                   aria-hidden="true"
@@ -475,7 +449,7 @@ export default function Nav() {
               </a>
               <a
                 href="#"
-                className="group block rounded-lg p-4 text-center hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="group block rounded-lg p-4 text-center hover:bg-base-100 dark:hover:bg-gray-600"
               >
                 <svg
                   aria-hidden="true"
@@ -497,7 +471,7 @@ export default function Nav() {
               </a>
               <a
                 href="#"
-                className="group block rounded-lg p-4 text-center hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="group block rounded-lg p-4 text-center hover:bg-base-100 dark:hover:bg-gray-600"
               >
                 <svg
                   aria-hidden="true"
@@ -519,7 +493,7 @@ export default function Nav() {
               </a>
               <a
                 href="#"
-                className="group block rounded-lg p-4 text-center hover:bg-gray-100 dark:hover:bg-gray-600"
+                className="group block rounded-lg p-4 text-center hover:bg-base-100 dark:hover:bg-gray-600"
               >
                 <svg
                   aria-hidden="true"
@@ -538,23 +512,7 @@ export default function Nav() {
                   몰라4
                 </div>
               </a>
-              <button
-                onClick={toggleMode}
-                className="group block rounded-lg p-4 text-center transition-colors hover:bg-gray-100 dark:hover:bg-gray-600"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="mx-auto mb-1 h-7 w-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
-                </svg>
-                <div className="text-sm text-gray-900 dark:text-white">
-                  다크모드
-                </div>
-              </button>
+
             </div>
           </div>
           <button
@@ -591,7 +549,7 @@ export default function Nav() {
               <li>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="block px-4 py-2 text-sm hover:bg-base-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   내 정보
                 </a>
@@ -604,7 +562,7 @@ export default function Nav() {
               <li>
                 <a
                   href="#"
-                  className="flex items-center px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="flex items-center px-4 py-2 text-sm hover:bg-base-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   <svg
                     className="mr-2 h-5 w-5 text-gray-400"
@@ -624,7 +582,7 @@ export default function Nav() {
               <li>
                 <a
                   href="#"
-                  className="flex items-center px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="flex items-center px-4 py-2 text-sm hover:bg-base-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   <svg
                     className="mr-2 h-5 w-5 text-gray-400"
@@ -645,7 +603,7 @@ export default function Nav() {
               <li>
                 <a
                   href="#"
-                  className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="block px-4 py-2 text-sm hover:bg-base-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   로그아웃
                 </a>
