@@ -15,6 +15,7 @@ import MailPage from "./pages/MailPage.jsx";
 import OrganizationPage from "./pages/OrganizationPage.jsx";
 import DrivePage from "./pages/DrivePage.jsx";
 import WorkManagementPage from "./pages/WorkManagementPage.jsx";
+import ContactsPage from "./pages/ContactsPage.jsx";
 
 export default function App() {
   return (
@@ -56,7 +57,7 @@ export default function App() {
             ></Route>
             <Route
               path="/ggirick_wireframe/address"
-              element={<CommonLayout />}
+              element={<ContactsPage />}
             ></Route>
             <Route
               path="/ggirick_wireframe/chat"
