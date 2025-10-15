@@ -1,4 +1,4 @@
-import ContactsSidebar from "../commons/components/contacts/ContactsSidebar.jsx";
+
 import Contacts from "../commons/components/contacts/Contacts.jsx";
 
 export default function ContactsPage() {
