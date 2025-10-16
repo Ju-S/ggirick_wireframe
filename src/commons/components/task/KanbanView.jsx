@@ -1,20 +1,19 @@
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 import api from "../../../utils/api.js";
+import { useState } from "react";
+import TaskClickMenu from "./TaskClickMenu.jsx";
 
-export default function TaskKanban({ selectedProject, setProjects }) {
+export default function TaskKanban({projects, selectedProject, setProjects }) {
   const getColumns = (tasks) => ({
     "할 일": tasks.filter((t) => t.status === "할 일"),
     "진행 중": tasks.filter((t) => t.status === "진행 중"),
     "완료": tasks.filter((t) => t.status === "완료"),
   });
 
-
   const updateTaskStatus = async (taskId, status) => {
-    const res = await api.patch(`/project/task/${taskId}`, { "status":status});
-    if(res.data.result) {
-      console.log("업데이트 성공");
-    }
-  }
+    const res = await api.patch(`/project/task/${taskId}/status`, { status });
+    if (res.data.result) console.log("업데이트 성공");
+  };
 
   const onDragEnd = async (result) => {
     const { source, destination } = result;
@@ -32,13 +31,12 @@ export default function TaskKanban({ selectedProject, setProjects }) {
         p.id === selectedProject.id ? { ...p, tasks: updatedTasks } : p
       )
     );
+
     try {
       const movedTask = updatedTasks.find((t) => String(t.id) === result.draggableId);
       await updateTaskStatus(movedTask.id, movedTask.status);
-      // 성공하면 그대로 두고, 필요시 추가 알림 가능
     } catch (error) {
       console.error("업데이트 실패:", error);
-      // 실패 시 UI 롤백
       setProjects((prev) =>
         prev.map((p) =>
           p.id === selectedProject.id ? { ...p, tasks: selectedProject.tasks } : p
@@ -46,6 +44,9 @@ export default function TaskKanban({ selectedProject, setProjects }) {
       );
     }
   };
+
+  const [contextMenuTaskId, setContextMenuTaskId] = useState(null);
+
 
   const columns = getColumns(selectedProject.tasks);
 
@@ -58,10 +59,9 @@ export default function TaskKanban({ selectedProject, setProjects }) {
               <div
                 ref={provided.innerRef}
                 {...provided.droppableProps}
-                className={`rounded-lg border border-base-300 p-4 transition-colors 
-                  ${snapshot.isDraggingOver ? "bg-primary/10" : "bg-base-200"}`}
+                className={`border-base-300 rounded-lg border p-4 transition-colors ${snapshot.isDraggingOver ? "bg-primary/10" : "bg-base-200"}`}
               >
-                <h4 className="mb-3 font-semibold text-primary">{col}</h4>
+                <h4 className="text-primary mb-3 font-semibold">{col}</h4>
 
                 <div className="min-h-[100px] space-y-3">
                   {colTasks.map((task, index) => (
@@ -75,16 +75,30 @@ export default function TaskKanban({ selectedProject, setProjects }) {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className={`cursor-pointer rounded-lg border border-base-300 p-3 shadow-sm transition-all
-                            ${snapshot.isDragging
-                            ? "bg-primary text-primary-content"
-                            : "bg-base-100 hover:bg-primary/10"}`}
+                          className={`border-base-300 relative cursor-pointer rounded-lg border p-3 shadow-sm transition-all ${snapshot.isDragging ? "bg-primary text-primary-content" : "bg-base-100 hover:bg-primary/10"}`}
+                          onContextMenu={(e) => {
+                            e.preventDefault();
+                            setContextMenuTaskId(task.id);
+                          }}
                         >
                           <p className="text-sm font-medium">{task.title}</p>
-                          <div className="mt-1 flex items-center justify-between text-xs text-base-content/70">
-                            <div>{task.assignee}</div>
+                          <div className="text-base-content/70 mt-1 flex items-center justify-between text-xs">
+                            <div>    {
+                              selectedProject.members.find(m => m.employee_Id === task.assignee)?.name
+                              || task.assignee // 혹시 매칭 안 되면 employee_id 그대로 보여줌
+                            }</div>
                             <span>{task.due}</span>
                           </div>
+
+                          {/* 항목 내 우클릭 메뉴 */}
+                          <TaskClickMenu
+                            selectedProject={selectedProject}
+                            task={task}
+                            projects = {projects}
+                            setProjects={setProjects}
+                            contextMenuTaskId={contextMenuTaskId}
+                            setContextMenuTaskId={setContextMenuTaskId}
+                          />
                         </div>
                       )}
                     </Draggable>

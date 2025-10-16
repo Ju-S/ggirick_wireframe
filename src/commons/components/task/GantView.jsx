@@ -1,4 +1,4 @@
-export default function GanttView({ tasks }) {
+export default function GanttView({ selectedProject }) {
   const getGanttData = (tasks) => {
     return tasks.map((task) => {
       const dueDate = new Date(task.due);
@@ -8,7 +8,7 @@ export default function GanttView({ tasks }) {
     });
   };
 
-  const ganttTasks = getGanttData(tasks);
+  const ganttTasks = getGanttData(selectedProject.tasks);
 
   return (
     <div className="p-4 bg-base-200 min-h-[calc(100vh-10rem)] transition-colors duration-300">
@@ -43,7 +43,10 @@ export default function GanttView({ tasks }) {
                   {/* Task Info */}
                   <div className="flex-1">
                     <p className="font-medium text-base-content">{task.title}</p>
-                    <p className="text-sm text-base-content/70 mt-1">{task.assignee}</p>
+                    <p className="text-sm text-base-content/70 mt-1"> <div>    {
+                      selectedProject.members.find(m => m.employee_Id === task.assignee)?.name
+                      || task.assignee // 혹시 매칭 안 되면 employee_id 그대로 보여줌
+                    }</div></p>
                   </div>
 
                   {/* Due Info */}

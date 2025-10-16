@@ -42,9 +42,13 @@ export const DatabaseView = ({ selectedProject }) => {
                   <td className="px-4 py-4">
                     <div className="flex items-center gap-2">
                       <div className="w-7 h-7 flex items-center justify-center rounded-full bg-primary text-primary-content text-xs font-semibold">
-                        {task.assignee.charAt(0)}
+                        { selectedProject.members.find(m => m.employee_Id === task.assignee)?.role_name.charAt(0)
+                          || task.assignee.charAt(0)
+                        }
                       </div>
-                      <span className="text-base-content/80">{task.assignee}</span>
+                      <span className="text-base-content/80">{ selectedProject.members.find(m => m.employee_Id === task.assignee)?.name
+                        || task.assignee
+                         }</span>
                     </div>
                   </td>
 
@@ -88,7 +92,7 @@ export const DatabaseView = ({ selectedProject }) => {
                             : "bg-success text-success-content"
                         }`}
                       >
-                        {isOverdue ? "높음" : "보통"}
+                       {task.priority}
                       </span>
                   </td>
                 </tr>
