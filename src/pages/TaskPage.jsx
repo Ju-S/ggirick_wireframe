@@ -5,6 +5,7 @@ import TableView from "../commons/components/task/TableView.jsx";
 import { DatabaseView } from "../commons/components/task/DatabaseView.jsx";
 import GanttView from "../commons/components/task/GantView.jsx";
 import api from "../utils/api.js";
+import TaskDrawer from "../commons/components/task/TaskDrawer.jsx";
 
 export default function TaskPage() {
   const [projects, setProjects] = useState([]);
@@ -12,12 +13,17 @@ export default function TaskPage() {
   const [selectedProjectId, setSelectedProjectId] = useState(1);
   const [activeView, setActiveView] = useState("kanban");
 
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+
   useEffect(() => {
     api.get("/project").then((e) => {
       setProjects(e.data);
+      console.log(e.data);
       if (e.data.length > 0) {
         setSelectedProjectId(e.data[e.data.length-1].id);
       }
+
     });
   }, []);
 
@@ -41,19 +47,21 @@ export default function TaskPage() {
     onTaskUpdate: handleTaskUpdate,
   };
 
+
+
   const renderView = () => {
     if (!selectedProject) return <p>프로젝트를 선택하세요</p>;
     switch (activeView) {
       case "kanban":
-        return <KanbanView selectedProject={selectedProject} setProjects={setProjects} />;
+        return <KanbanView projects={projects} selectedProject={selectedProject} setProjects={setProjects} />;
       case "table":
-        return <TableView selectedProject={selectedProject} />;
+        return <TableView  projects={projects} selectedProject={selectedProject} setProjects={setProjects} />;
       case "calendar":
-        return <CalendarView {...viewProps} />;
+        return <CalendarView {...viewProps} selectedProject={selectedProject} />;
       case "database":
         return <DatabaseView selectedProject={selectedProject} />;
       case "gantt":
-        return <GanttView {...viewProps} />;
+        return <GanttView {...viewProps}  selectedProject={selectedProject}/>;
       default:
         return (
           <div className="p-6 text-gray-400 text-center h-96 flex items-center justify-center">
@@ -97,13 +105,14 @@ export default function TaskPage() {
                   key={i}
                   className="w-8 h-8 flex items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-primary-content text-xs font-semibold border-2 border-base-100 shadow-sm"
                 >
-                  {m}
+                  {m.name}
                 </div>
               ))}
             </div>
-            <button className="px-4 py-2 bg-secondary text-secondary-content rounded-lg text-sm font-medium hover:bg-secondary/80 transition-colors shadow-sm">
+            <button className="px-4 py-2 bg-secondary text-secondary-content rounded-lg text-sm font-medium hover:bg-secondary/80 transition-colors shadow-sm"  onClick={() => setDrawerOpen(true) }>
               + 새 할 일
             </button>
+            <TaskDrawer projects={projects} setProjects ={setProjects} selectedProject = {selectedProject} open={drawerOpen} onClose={() => setDrawerOpen(false)} />
           </div>
         </div>
       </header>
@@ -148,6 +157,7 @@ export default function TaskPage() {
 
       {/* 🔹 메인 콘텐츠 */}
       <section className="flex-1 overflow-y-auto p-4">{renderView()}</section>
+
     </main>
   );
 }

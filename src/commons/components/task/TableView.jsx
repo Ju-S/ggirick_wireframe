@@ -1,8 +1,12 @@
-export default function TableView({ selectedProject }) {
+import TaskClickMenu from "./TaskClickMenu.jsx";
+import { useState } from "react";
+
+export default function TableView({ selectedProject, setProjects, projects }) {
+  const [contextMenuTaskId, setContextMenuTaskId] = useState(null);
+
   return (
-    <div className="overflow-x-auto bg-base-100 rounded-lg border border-base-300 shadow-sm">
+    <div className="overflow-x-auto bg-base-100 rounded-lg border border-base-300 shadow-sm relative">
       <table className="min-w-full text-sm text-left">
-        {/* ✅ thead 색상은 테마에 따라 자동으로 어두워짐 */}
         <thead className="bg-base-200 text-base-content/70 uppercase">
         <tr>
           <th className="px-6 py-3">업무명</th>
@@ -16,14 +20,14 @@ export default function TableView({ selectedProject }) {
         {selectedProject.tasks.map((task) => (
           <tr
             key={task.id}
-            className="border-t border-base-300 hover:bg-base-200 transition-colors"
+            className="border-t border-base-300 hover:bg-base-200 transition-colors relative"
+            onContextMenu={(e) => {
+              e.preventDefault();
+              setContextMenuTaskId(task.id);
+            }}
           >
             <td className="px-6 py-3 text-base-content">{task.title}</td>
-            <td className="px-6 py-3 text-base-content/90">
-              {task.assignee}
-            </td>
-
-            {/* ✅ 상태 배지: daisyUI 색상으로 변경 */}
+            <td className="px-6 py-3 text-base-content/90">{task.assignee}</td>
             <td className="px-6 py-3">
                 <span
                   className={`px-2 py-1 rounded text-xs font-medium ${
@@ -37,8 +41,15 @@ export default function TableView({ selectedProject }) {
                   {task.status}
                 </span>
             </td>
-
             <td className="px-6 py-3 text-base-content/80">{task.due}</td>
+            <TaskClickMenu
+              selectedProject={selectedProject}
+              task={task}
+              projects={projects}
+              setProjects={setProjects}
+              contextMenuTaskId={contextMenuTaskId}
+              setContextMenuTaskId={setContextMenuTaskId}
+            />
           </tr>
         ))}
         </tbody>
