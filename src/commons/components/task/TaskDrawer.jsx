@@ -183,7 +183,7 @@ export default function TaskDrawer({ open, onClose, projects, setProjects, selec
             className="select select-bordered w-full bg-base-100"
             onChange={(e) => handleProjectChange(Number(e.target.value))}
           >
-            <option disabled selected>
+            <option disabled>
               프로젝트 선택
             </option>
             {projects.map((p) => (

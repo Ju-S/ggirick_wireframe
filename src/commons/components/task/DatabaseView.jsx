@@ -7,7 +7,7 @@ export const DatabaseView = ({ selectedProject }) => {
             {/* ✅ 테이블 헤더 */}
             <thead className="bg-base-200 border-b border-base-300">
             <tr>
-              {["ID", "업무명", "담당자", "상태", "마감일", "프로젝트", "우선순위"].map((h) => (
+              {["ID", "업무명", "담당자", "상태","시작일", "마감일", "프로젝트", "우선순위"].map((h) => (
                 <th
                   key={h}
                   className="px-4 py-3 text-left font-semibold text-base-content/70 text-xs uppercase"
@@ -66,7 +66,16 @@ export const DatabaseView = ({ selectedProject }) => {
                         {task.status}
                       </span>
                   </td>
-
+                  {/* ✅ 시작일 */}
+                  <td className="px-4 py-4">
+                      <span
+                        className={`font-medium ${
+                          isOverdue ? "text-error" : "text-base-content/80"
+                        }`}
+                      >
+                        {task.start}
+                      </span>
+                  </td>
                   {/* ✅ 마감일 */}
                   <td className="px-4 py-4">
                       <span

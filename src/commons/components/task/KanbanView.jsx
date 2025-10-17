@@ -61,7 +61,17 @@ export default function TaskKanban({projects, selectedProject, setProjects }) {
                 {...provided.droppableProps}
                 className={`border-base-300 rounded-lg border p-4 transition-colors ${snapshot.isDraggingOver ? "bg-primary/10" : "bg-base-200"}`}
               >
-                <h4 className="text-primary mb-3 font-semibold">{col}</h4>
+                 <span
+                   className={`px-3 py-1 rounded-full text-xs font-medium ${
+                     col === "완료"
+                       ? "bg-success text-success-content"
+                       : col === "진행 중"
+                         ? "bg-info text-info-content"
+                         : "bg-neutral text-neutral-content"
+                   }`}
+                 >
+                        {col}
+                      </span>
 
                 <div className="min-h-[100px] space-y-3">
                   {colTasks.map((task, index) => (

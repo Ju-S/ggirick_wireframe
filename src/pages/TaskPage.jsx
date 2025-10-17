@@ -6,7 +6,7 @@ import { DatabaseView } from "../commons/components/task/DatabaseView.jsx";
 import GanttView from "../commons/components/task/GantView.jsx";
 import api from "../utils/api.js";
 import TaskDrawer from "../commons/components/task/TaskDrawer.jsx";
-
+import FullCalenderView from "../commons/components/task/FullCalenderView.jsx";
 export default function TaskPage() {
   const [projects, setProjects] = useState([]);
 
@@ -19,7 +19,7 @@ export default function TaskPage() {
   useEffect(() => {
     api.get("/project").then((e) => {
       setProjects(e.data);
-      console.log(e.data);
+
       if (e.data.length > 0) {
         setSelectedProjectId(e.data[e.data.length-1].id);
       }
@@ -57,7 +57,8 @@ export default function TaskPage() {
       case "table":
         return <TableView  projects={projects} selectedProject={selectedProject} setProjects={setProjects} />;
       case "calendar":
-        return <CalendarView {...viewProps} selectedProject={selectedProject} />;
+        return <FullCalenderView selectedProject={selectedProject}/>
+       // return <CalendarView {...viewProps} selectedProject={selectedProject} />;
       case "database":
         return <DatabaseView selectedProject={selectedProject} />;
       case "gantt":
